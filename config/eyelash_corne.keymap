@@ -37,6 +37,13 @@
             bindings = <&kp LA(TAB)>, <&tog 4>;
 		};
 
+		td3: td3 {
+            compatible = "zmk,behavior-tap-dance";
+            display-name = "rgb + toggle 4";
+            #binding-cells = <0>;
+            bindings = <&rgb_ug RGB_TOG>, <&tog 4>;
+		};
+
         rsr_vol: rsr_vol {
             compatible = "zmk,behavior-runtime-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -64,76 +71,76 @@
         compatible = "zmk,combos";
 		combo_lbrc {
 			timeout-ms = <30>;
-			key-positions = <15 16>;
+			key-positions = <14 15>;
 			bindings = <&kp JP_LBRC>;
 		};
 		combo_lbkt {
 			timeout-ms = <30>;
-			key-positions = <16 17>;
+			key-positions = <15 16>;
 			bindings = <&kp JP_LBKT>;
 		};
 		combo_lpar {
 			timeout-ms = <30>;
-			key-positions = <17 18>;
+			key-positions = <16 17>;
 			bindings = <&kp JP_LPAR>;
 		};
 		combo_tilde {
 			timeout-ms = <30>;
-			key-positions = <15 18>;
+			key-positions = <14 17>;
 			bindings = <&kp JP_TILDE>;
 		};
 		combo_lt {
 			timeout-ms = <30>;
-			key-positions = <15 19>;
+			key-positions = <14 18>;
 			bindings = <&kp JP_LT>;
 		};
 		combo_eq {
 			timeout-ms = <30>;
-			key-positions = <16 18>;
+			key-positions = <15 17>;
 			bindings = <&kp JP_EQUAL>;
 		};
 
 		combo_rbrc {
 			timeout-ms = <30>;
-			key-positions = <26 27>;
+			key-positions = <25 26>;
 			bindings = <&kp JP_RBRC>;
 		};
 		combo_rbkt {
 			timeout-ms = <30>;
-			key-positions = <25 26>;
+			key-positions = <24 25>;
 			bindings = <&kp JP_RBKT>;
 		};
 		combo_rpar {
 			timeout-ms = <30>;
-			key-positions = <24 25>;
+			key-positions = <23 24>;
 			bindings = <&kp JP_RPAR>;
 		};
 		combo_und {
 			timeout-ms = <30>;
-			key-positions = <24 27>;
+			key-positions = <23 26>;
 			bindings = <&kp JP_UNDER>;
 		};
 		combo_gt {
 			timeout-ms = <30>;
-			key-positions = <23 27>;
+			key-positions = <22 26>;
 			bindings = <&kp JP_GT>;
 		};
 		combo_dash {
 			timeout-ms = <30>;
-			key-positions = <23 24>;
+			key-positions = <22 23>;
 			bindings = <&kp JP_MINUS>;
 		};
 		combo_dquo {
 			timeout-ms = <30>;
-			key-positions = <24 26>;
+			key-positions = <23 25>;
 			bindings = <&kp JP_DQT>;
 		};
     };
 
-//  1  2  3  4  5  6           7      8  9 10 11 12 13
-// 14 15 16 17 18 19       20 21 22  23 24 25 26 27 28
-// 29 30 31 32 33 34  35      36     37 38 39 40 41 42
-//          43 44 45                 46 47 48
+//  0  1  2  3  4  5           6      7  8  9 10 11 12
+// 13 14 15 16 17 18       19 20 21  22 23 24 25 26 27
+// 28 29 30 31 32 33  34      35     36 37 38 39 40 41
+//          42 43 44                 45 46 47
     keymap {  
         compatible = "zmk,keymap";
         L0 {
@@ -184,10 +191,10 @@
         L4 {
             display-name = "MISC";
             bindings = <
-&sys_reset   &trans  &trans  &trans  &trans  &trans                         &rgb_ug RGB_HUI                    &trans          &trans           &trans           &trans           &trans  &sys_reset       
-&bootloader  &trans  &trans  &trans  &trans  &trans        &rgb_ug RGB_SAD  &rgb_ug RGB_TOG  &rgb_ug RGB_SAI   &rgb_ug RGB_SPD &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &trans  &bootloader
-&trans       &trans  &trans  &trans  &trans  &trans   &trans                &rgb_ug RGB_HUD                    &trans          &trans           &trans           &trans           &trans  &trans 
-                             &trans  &trans  &trans                                                            &trans  &trans  &trans
+&sys_reset   &trans  &trans  &trans  &bt BT_CLR      &bt BT_NXT                         &rgb_ug RGB_HUI         &trans          &trans           &trans           &trans           &trans  &sys_reset       
+&bootloader  &trans  &trans  &trans  &bt BT_CLR_ALL  &bt BT_PRV        &rgb_ug RGB_SAD  &td3  &rgb_ug RGB_SAI   &rgb_ug RGB_SPD &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &trans  &bootloader
+&trans       &trans  &trans  &trans  &trans  &trans  &trans                            &rgb_ug RGB_HUD          &trans          &trans           &trans           &trans           &trans  &trans 
+                                     &trans  &trans  &trans                                                     &trans  &trans  &trans
             >;
             sensor-bindings = <&rsr_rgb &rsr_trans>;
         };
