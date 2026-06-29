@@ -132,10 +132,10 @@
         L0 {
             display-name = "QWERTY";
             bindings = <
-&mt LGUI TAB &kp Q  &kp W  &kp E     &kp R  &kp T                        &mmv MOVE_UP                 &kp Y        &kp U  &kp I      &kp O    &kp P        &kp BSPC
-&kp LSHFT    &kp A  &kp S  &kp D     &kp F  &kp G         &mmv MOVE_LEFT &mkp LCLK  &mmv MOVE_RIGHT   &kp H        &kp J  &kp K      &kp L    &kp JP_SEMI  &mt RSHFT JP_COLON
-&kp LCTRL    &kp Z  &kp X  &kp C     &kp V  &kp B  &td1                  &mmv MOVE_DOWN               &kp N        &kp M  &kp COMMA  &kp DOT  &kp JP_FSLH  &mt RCTRL JP_BSLH
-                           &kp LGUI  &lt 2 ESC  &lt 1 TAB                                             &lt 5 ENTER  &kp SPACE  &lt 3 DEL
+&mt LGUI TAB &kp Q  &kp W  &kp E     &kp R      &kp T                  &kp UP                  &kp Y        &kp U  &kp I      &kp O    &kp P        &kp BSPC
+&kp LSHFT    &kp A  &kp S  &kp D     &kp F      &kp G         &kp LEFT &kp LA(TAB)  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp JP_SEMI  &mt RSHFT JP_COLON
+&kp LCTRL    &kp Z  &kp X  &kp C     &kp V      &kp B  &td1            &kp DOWN                &kp N        &kp M  &kp COMMA  &kp DOT  &kp JP_FSLH  &mt RCTRL JP_BSLH
+                           &kp LGUI  &lt 2 ESC  &lt 1 TAB                                      &lt 5 ENTER  &kp SPACE  &lt 3 DEL
             >;
             sensor-bindings = <&rsr_vol &rsr_trans>;
         };
