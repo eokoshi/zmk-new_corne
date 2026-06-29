@@ -15,7 +15,6 @@
 #define JP_N8    N8
 #define JP_N9    N9
 #define JP_AT    LEFT_BRACKET     // @
-#define JP_BSLH  INTERNATIONAL_1  // (backslash)
 #define JP_CAPS  LS(JP_EISU)      // Caps     Lock
 #define JP_CARET EQUAL            // ^
 #define JP_COLON SINGLE_QUOTE     // :
@@ -26,8 +25,11 @@
 #define JP_FSLH  FSLH             // /
 #define JP_GRAVE LS(JP_AT)        // `
 #define JP_GT    LS(JP_DOT)       // >
-#define JP_HENK  INT4             // Henkan   (変換)
-#define JP_KANA  INT2             // Katakana ↔ Hiragana ↔ Rōmaji (カタカナ ↔ ひらがな ↔ ローマ字)
+#define JP_BSLH  0x87             // (backslash)
+#define JP_KANA  0x88             // Katakana ↔ Hiragana ↔ Rōmaji (カタカナ ↔ ひらがな ↔ ローマ字)
+#define JP_YEN   0x89             // ¥
+#define JP_HENK  0x8A             // Henkan   (変換)
+#define JP_MHEN  0x8B             // Muhenkan (無変換)
 #define JP_LBKT  RIGHT_BRACKET    // [
 #define JP_RBKT  BACKSLASH        // ]
 #define JP_LBRC  LS(JP_LBKT)      // {
@@ -35,7 +37,6 @@
 #define JP_LPAR  LS(JP_N8)         // (
 #define JP_RPAR  LEFT_PARENTHESIS // )
 #define JP_LT    LS(JP_COMMA)     // <
-#define JP_MHEN  INT5             // Muhenkan (無変換)
 #define JP_MINUS MINUS            // -        
 #define JP_EXCL  LS(JP_N1)         // !
 #define JP_DQT   LS(JP_N2)         // "
@@ -52,7 +53,6 @@
 #define JP_STAR  LS(JP_COLON)     // *
 #define JP_TILDE LS(JP_CARET)     // ~
 #define JP_UNDER LS(JP_BSLH)      // _
-#define JP_YEN   0x89             // ¥
 #define JP_ZKHK  GRAVE            // 半角/全角
 
 // #define JP_AMPS  CARET            // &
