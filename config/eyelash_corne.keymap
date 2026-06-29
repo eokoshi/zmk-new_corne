@@ -177,9 +177,9 @@
         L4 {
             display-name = "MISC";
             bindings = <
-&sys_reset   &trans  &trans  &trans  &trans  &trans                         &rgb_ug RGB_BRI                    &trans  &trans  &trans  &trans  &trans  &sys_reset       
-&bootloader  &trans  &trans  &trans  &trans  &trans        &rgb_ug RBG_SAD  &rgb_ug RGB_TOG  &rgb_ug RGB_SAI   &rgb_ug RGB_SPD &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &trans  &bootloader
-&trans  &trans  &trans  &trans  &trans  &trans   &trans                &rgb_ug RGB_BRD                    &trans  &trans  &trans  &trans  &trans  &trans 
+&sys_reset   &trans  &trans  &trans  &trans  &trans                         &rgb_ug RGB_BRI                    &trans          &trans           &trans           &trans           &trans  &sys_reset       
+&bootloader  &trans  &trans  &trans  &trans  &trans        &rgb_ug RGB_SAD  &rgb_ug RGB_TOG  &rgb_ug RGB_SAI   &rgb_ug RGB_SPD &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &trans  &bootloader
+&trans       &trans  &trans  &trans  &trans  &trans   &trans                &rgb_ug RGB_BRD                    &trans          &trans           &trans           &trans           &trans  &trans 
                         &trans  &trans  &trans                                                            &trans  &trans  &trans
             >;
             sensor-bindings = <&rsr_rgb &rsr_trans>;
@@ -189,9 +189,9 @@
             display-name = "MOUSE";
             bindings = <
 &kp LA(F4)  &trans          &msc SCRL_UP    &mmv MOVE_UP    &msc SCRL_DOWN   &trans                         &trans           &kp HOME  &kp PG_UP  &kp PG_DN  &kp END    &trans  &trans
-&trans  &msc SCRL_LEFT  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_RIGHT        &trans  &trans  &trans   &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans  &trans
-&trans  &trans          &trans          &trans          &trans           &trans                         &trans           &trans    &trans     &trans     &trans     &trans  &trans
-                                        &trans          &mkp MB1         &mkp MB2                                        &trans    &trans     &trans
+&trans      &msc SCRL_LEFT  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_RIGHT        &trans  &trans  &trans   &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans  &trans
+&trans      &trans          &trans          &trans          &trans           &trans        &trans           &trans           &trans    &trans     &trans     &trans     &trans  &trans
+                                            &trans          &mkp MB1         &mkp MB2                                        &trans    &trans     &trans
             >;
             sensor-bindings = <&rsr_vol &rsr_trans>;
         };
