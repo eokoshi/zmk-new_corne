@@ -15,13 +15,20 @@
 &soft_off { hold-time-ms = <2000>; };
 
 / {
-    behaviors {
+	behaviors {
         td0: td0 {
             compatible = "zmk,behavior-tap-dance";
             display-name = "Shift/Caps Lock Tap Dance";
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
         };
+
+		td1: td1 {
+            compatible = "zmk,behavior-tap-dance";
+            display-name = "Shift/Caps Lock Tap Dance";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LA(SPACE))>, <&tog 4>;
+		};
 
         rsr_vol: rsr_vol {
             compatible = "zmk,behavior-runtime-sensor-rotate";
@@ -31,6 +38,14 @@
             ccw-binding = <&kp C_VOL_DN>;
         };
 
+        rsr_rgb: rsr_rgb {
+            compatible = "zmk,behavior-runtime-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            tap-ms = <5>;
+            cw-binding = <&rgb_ug RGB_HUI>;
+            ccw-binding = <&rgb_ug RGB_HUD>;
+        };
+
         rsr_trans: rsr_trans {
             compatible = "zmk,behavior-runtime-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -38,7 +53,7 @@
         };
     };
 
-   combos {
+	combos {
         compatible = "zmk,combos";
 		combo_lbrc {
 			timeout-ms = <30>;
@@ -65,12 +80,47 @@
 			key-positions = <15 19>;
 			bindings = <&kp JP_LT>;
 		};
+		combo_eq {
+			timeout-ms = <30>;
+			key-positions = <16 18>;
+			bindings = <&kp JP_LT>;
+		};
 
-
-        softoff {
-            bindings = <&soft_off>;
-            key-positions = <1 15 29>;
-        };
+		combo_rbrc {
+			timeout-ms = <30>;
+			key-positions = <26 27>;
+			bindings = <&kp JP_RBRC>;
+		};
+		combo_rbkt {
+			timeout-ms = <30>;
+			key-positions = <25 26>;
+			bindings = <&kp JP_LBKT>;
+		};
+		combo_rpar {
+			timeout-ms = <30>;
+			key-positions = <24 25>;
+			bindings = <&kp JP_LPAR>;
+		};
+		combo_und {
+			timeout-ms = <30>;
+			key-positions = <24 27>;
+			bindings = <&kp JP_UNDER>;
+		};
+		combo_gt {
+			timeout-ms = <30>;
+			key-positions = <23 27>;
+			bindings = <&kp JP_GT>;
+		};
+		combo_dash {
+			timeout-ms = <30>;
+			key-positions = <23 24>;
+			bindings = <&kp JP_MINUS>;
+		};
+		combo_dquo {
+			timeout-ms = <30>;
+			key-positions = <24 26>;
+			bindings = <&kp JP_DQT>;
+		};
     };
 
 //  1  2  3  4  5  6           7      8  9 10 11 12 13
@@ -79,51 +129,70 @@
 //          43 44 45                 46 47 48
     keymap {  
         compatible = "zmk,keymap";
-        default_layer {
+        L0 {
             display-name = "QWERTY";
             bindings = <
-&kp TAB    &kp JP_Q  &kp W  &kp E     &kp R  &kp T                               &kp UP                &kp Y        &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&td0       &kp A  &kp S  &kp D     &kp F  &kp G                     &kp LEFT  &kp ENTER  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LCTRL  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp SPACE              &kp DOWN              &kp N        &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &mo 1  &lt 3 SPACE                                               &lt 3 ENTER  &mo 2  &kp RALT
+&mt LGUI TAB &kp Q  &kp W  &kp E     &kp R  &kp T                        &mmv MOVE_UP                 &kp Y        &kp U  &kp I      &kp O    &kp P        &kp BSPC
+&kp LSHFT    &kp A  &kp S  &kp D     &kp F  &kp G         &mmv MOVE_LEFT &mkp LCLK  &mmv MOVE_RIGHT   &kp H        &kp J  &kp K      &kp L    &kp JP_SEMI  &mt RSHFT JP_COLON
+&kp LCTRL    &kp Z  &kp X  &kp C     &kp V  &kp B  &td1                  &mmv MOVE_DOWN               &kp N        &kp M  &kp COMMA  &kp DOT  &kp JP_FSLH  &mt RCTRL JP_BSLH
+                           &kp LGUI  &lt 2 ESC  &lt 1 TAB                                             &lt 5 ENTER  &kp SPACE  &lt 3 DEL
             >;
-
             sensor-bindings = <&rsr_vol &rsr_trans>;
         };
 
-        lower_layer {
-            display-name = "NUMBER";
+        L1 {
+            display-name = "NUM";
             bindings = <
-&trans  &kp JP_N1           &kp N2          &kp N3        &kp N4        &kp N5                                         &mmv MOVE_UP                     &kp N6           &kp N7           &kp N8           &kp N9           &kp N0    &kp BSPC
-&trans  &bt BT_CLR_ALL   &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3                   &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp LEFT         &kp DOWN         &kp UP           &kp RIGHT        &kp HOME  &kp PG_UP
-&trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &trans        &trans        &rgb_ug RGB_EFF  &kp C_MUTE                    &mmv MOVE_DOWN                   &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp END   &kp PG_DN
-                                         &trans        &trans        &trans                                                                          &kp INS          &kp DEL          &trans
+&trans  &kp JP_AT     &kp JP_N7  &kp JP_N8  &kp JP_N9  &kp JP_CARET             &trans         &kp JP_AT     &kp JP_N7  &kp JP_N8  &kp JP_N9  &kp JP_CARET  &trans
+&trans  &kp JP_MINUS  &kp JP_N4  &kp JP_N5  &kp JP_N6  &kp JP_COMMA     &trans  &trans  &trans &kp JP_MINUS  &kp JP_N4  &kp JP_N5  &kp JP_N6  &kp JP_PLUS   &kp JP_STAR
+&trans  &kp JP_N0     &kp JP_N1  &kp JP_N2  &kp JP_N3  &kp JP_DOT  &trans       &trans         &kp JP_N0     &kp JP_N1  &kp JP_N2  &kp JP_N3  &kp JP_DOT    &kp JP_COMMA
+                                 &trans     &trans     &trans                                  &trans        &trans     &trans
             >;
-
             sensor-bindings = <&rsr_vol &rsr_trans>;
         };
 
-        raise_layer {
+        L2 {
             display-name = "SYMBOL";
             bindings = <
-&trans  &kp EXCL      &kp AT        &kp HASH   &kp DLLR   &kp PRCNT                            &mmv MOVE_UP                     &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-&trans  &bt BT_CLR    &mkp LCLK     &mkp MCLK  &mkp RCLK  &mkp MB4             &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&trans  &out OUT_USB  &out OUT_BLE  &none      &none      &mkp MB5   &trans                    &mmv MOVE_DOWN                   &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
-                                    &trans     &trans     &kp SPACE                                                             &kp RET    &trans     &trans
+&trans  &trans       &kp INT5   &kp LANG5  &kp LG(SPACE)  &trans              &trans         &kp JP_GRAVE  &kp JP_SQT   &kp JP_LPAR   &kp JP_RPAR  &kp JP_TILDE  &trans
+&trans  &kp LA(TAB)  &kp SPACE  &kp ENTER  &kp BSPC       &kp DEL     &trans  &trans  &trans &kp JP_EQUAL  &kp JP_DLLR  &kp JP_PRCNT  &kp JP_AMPS  &kp JP_PIPE   &trans
+&trans  &trans       &trans     &trans     &trans         &trans              &trans         &kp JP_UNDER  &kp JP_EXCL  &kp JP_DQT    &kp JP_HASH  &trans        &trans
+                                &trans     &trans         &trans                             &trans        &trans     &trans
             >;
-
             sensor-bindings = <&rsr_vol &rsr_trans>;
         };
 
-        layer_3 {
-            display-name = "Fn";
+        L3 {
+            display-name = "FUNC";
             bindings = <
-&studio_unlock  &kp F1      &kp F2     &kp F3       &kp F4     &kp F5                                  &mmv MOVE_UP                     &kp F6       &kp F7     &kp F8       &kp F9      &kp F10          &kp F11
-&trans          &trans      &mkp LCLK  &mkp MCLK    &mkp RCLK  &mkp MB4                &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &bootloader  &mkp LCLK  &mkp MCLK    &mkp RCLK   &kp PRINTSCREEN  &kp F12
-&trans          &sys_reset  &trans     &bootloader  &trans     &mkp MB5  &kp C_MUTE                    &mmv MOVE_DOWN                   &trans       &trans     &bootloader  &sys_reset  &kp SCROLLLOCK   &kp PAUSE_BREAK
-                                       &trans       &trans     &trans                                                                   &trans       &trans     &trans
+&trans  &kp F9  &kp F10  &kp F11  &kp F12  &trans                &trans           &kp JP_AT     &kp JP_N7  &kp JP_N8  &kp JP_N9  &kp JP_CARET  &trans       
+&trans  &kp F5  &kp F6   &kp F7   &kp F8   &trans        &trans  &trans  &trans   &kp JP_MINUS  &kp JP_N4  &kp JP_N5  &kp JP_N6  &kp JP_PLUS   &kp JP_STAR  
+&trans  &kp F1  &kp F2   &kp F3   &kp F4   &trans   &trans       &trans           &kp JP_N0     &kp JP_N1  &kp JP_N2  &kp JP_N3  &kp JP_DOT    &kp JP_COMMA 
+                         &trans   &trans   &trans                                 &trans        &trans     &trans
             >;
+            sensor-bindings = <&rsr_vol &rsr_trans>;
+        };
 
+		
+        L4 {
+            display-name = "MISC";
+            bindings = <
+&sys_reset   &trans  &trans  &trans  &trans  &trans                         &rgb_ug RGB_BRI                    &trans  &trans  &trans  &trans  &trans  &sys_reset       
+&bootloader  &trans  &trans  &trans  &trans  &trans        &rgb_ug RBG_SAD  &rgb_ug RGB_TOG  &rgb_ug RGB_SAI   &rgb_ug RGB_SPD &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &trans  &bootloader
+&trans  &trans  &trans  &trans  &trans  &trans   &trans                &rgb_ug RGB_BRD                    &trans  &trans  &trans  &trans  &trans  &trans 
+                        &trans  &trans  &trans                                                            &trans  &trans  &trans
+            >;
+            sensor-bindings = <&rsr_rgb &rsr_trans>;
+        };
+
+        L5 {
+            display-name = "MOUSE";
+            bindings = <
+&kp LA(F4)  &trans          &msc SCRL_UP    &mmv MOVE_UP    &msc SCRL_DOWN   &trans                         &trans           &kp HOME  &kp PG_UP  &kp PG_DN  &kp END    &trans  &trans
+&trans  &msc SCRL_LEFT  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &msc SCRL_RIGHT        &trans  &trans  &trans   &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans  &trans
+&trans  &trans          &trans          &trans          &trans           &trans                         &trans           &trans    &trans     &trans     &trans     &trans  &trans
+                                        &trans          &mkp MB1         &mkp MB2                                        &trans    &trans     &trans
+            >;
             sensor-bindings = <&rsr_vol &rsr_trans>;
         };
     };
