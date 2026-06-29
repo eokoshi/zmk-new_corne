@@ -1,5 +1,5 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 25   // 10
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 100   // 10
 
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
@@ -42,8 +42,8 @@
             compatible = "zmk,behavior-runtime-sensor-rotate";
             #sensor-binding-cells = <0>;
             tap-ms = <5>;
-            cw-binding = <&rgb_ug RGB_HUI>;
-            ccw-binding = <&rgb_ug RGB_HUD>;
+            cw-binding = <&rgb_ug RGB_BRI>;
+            ccw-binding = <&rgb_ug RGB_BRD>;
         };
 
         rsr_trans: rsr_trans {
@@ -135,7 +135,7 @@
 &mt LGUI TAB &kp Q  &kp W  &kp E     &kp R      &kp T                  &kp UP                  &kp Y        &kp U  &kp I      &kp O    &kp P        &kp BSPC
 &kp LSHFT    &kp A  &kp S  &kp D     &kp F      &kp G         &kp LEFT &kp LA(TAB)  &kp RIGHT  &kp H        &kp J  &kp K      &kp L    &kp JP_SEMI  &mt RSHFT JP_COLON
 &kp LCTRL    &kp Z  &kp X  &kp C     &kp V      &kp B  &td1            &kp DOWN                &kp N        &kp M  &kp COMMA  &kp DOT  &kp JP_FSLH  &mt RCTRL JP_BSLH
-                           &kp LGUI  &lt 2 ESC  &lt 1 TAB                                      &lt 5 ENTER  &kp SPACE  &lt 3 DEL
+                           &kp LALT  &lt 2 ESC  &lt 1 TAB                                      &lt 5 ENTER  &kp SPACE  &lt 3 DEL
             >;
             sensor-bindings = <&rsr_vol &rsr_trans>;
         };
@@ -177,10 +177,10 @@
         L4 {
             display-name = "MISC";
             bindings = <
-&sys_reset   &trans  &trans  &trans  &trans  &trans                         &rgb_ug RGB_BRI                    &trans          &trans           &trans           &trans           &trans  &sys_reset       
+&sys_reset   &trans  &trans  &trans  &trans  &trans                         &rgb_ug RGB_HUI                    &trans          &trans           &trans           &trans           &trans  &sys_reset       
 &bootloader  &trans  &trans  &trans  &trans  &trans        &rgb_ug RGB_SAD  &rgb_ug RGB_TOG  &rgb_ug RGB_SAI   &rgb_ug RGB_SPD &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &trans  &bootloader
-&trans       &trans  &trans  &trans  &trans  &trans   &trans                &rgb_ug RGB_BRD                    &trans          &trans           &trans           &trans           &trans  &trans 
-                        &trans  &trans  &trans                                                            &trans  &trans  &trans
+&trans       &trans  &trans  &trans  &trans  &trans   &trans                &rgb_ug RGB_HUD                    &trans          &trans           &trans           &trans           &trans  &trans 
+                             &trans  &trans  &trans                                                            &trans  &trans  &trans
             >;
             sensor-bindings = <&rsr_rgb &rsr_trans>;
         };
