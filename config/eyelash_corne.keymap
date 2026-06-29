@@ -44,27 +44,27 @@
 			timeout-ms = <30>;
 			key-positions = <15 16>;
 			bindings = <&kp JP_LBRC>;
-		}
+		};
 		combo_lbkt {
 			timeout-ms = <30>;
 			key-positions = <16 17>;
 			bindings = <&kp JP_LBKT>;
-		}
+		};
 		combo_lpar {
 			timeout-ms = <30>;
 			key-positions = <17 18>;
 			bindings = <&kp JP_LPAR>;
-		}
+		};
 		combo_tilde {
 			timeout-ms = <30>;
 			key-positions = <15 18>;
 			bindings = <&kp JP_TILDE>;
-		}
+		};
 		combo_lt {
 			timeout-ms = <30>;
 			key-positions = <15 19>;
 			bindings = <&kp JP_LT>;
-		}
+		};
 
 
         softoff {
