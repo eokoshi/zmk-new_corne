@@ -25,11 +25,11 @@
 #define JP_FSLH  FSLH             // /
 #define JP_GRAVE LS(JP_AT)        // `
 #define JP_GT    LS(JP_DOT)       // >
-#define JP_BSLH  0x87             // (backslash)
-#define JP_KANA  0x88             // Katakana ↔ Hiragana ↔ Rōmaji (カタカナ ↔ ひらがな ↔ ローマ字)
-#define JP_YEN   0x89             // ¥
-#define JP_HENK  0x8A             // Henkan   (変換)
-#define JP_MHEN  0x8B             // Muhenkan (無変換)
+#define JP_BSLH  INT1             // (backslash)
+#define JP_KANA  INT2             // Katakana ↔ Hiragana ↔ Rōmaji (カタカナ ↔ ひらがな ↔ ローマ字)
+#define JP_YEN   INT3             // ¥
+#define JP_HENK  INT4             // Henkan   (変換)
+#define JP_MHEN  INT5             // Muhenkan (無変換)
 #define JP_LBKT  RIGHT_BRACKET    // [
 #define JP_RBKT  BACKSLASH        // ]
 #define JP_LBRC  LS(JP_LBKT)      // {
