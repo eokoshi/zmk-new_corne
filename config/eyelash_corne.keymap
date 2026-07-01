@@ -1,5 +1,5 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 100   // 10
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 10   // 10
 
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
@@ -20,7 +20,7 @@
 			compatible = "zmk,behavior-tap-dance";
 			display-name = "Shift/Caps Lock Tap Dance";
 			#binding-cells = <0>;
-			bindings = <&kp LEFT_SHIFT>, <&kp JP_CAPS>;
+			bindings = <&kp LEFT_SHIFT>, <&kp CAPS>;
 		};
 
 		td1: td1 {
@@ -158,10 +158,10 @@
 		L1 {
 			display-name = "NUM";
 			bindings = <
-&trans     &kp JP_AT     &kp JP_N7  &kp JP_N8  &kp JP_N9  &kp JP_CARET                 &trans          &kp JP_AT     &kp JP_N7  &kp JP_N8  &kp JP_N9  &kp JP_CARET &trans
-&trans     &kp JP_MINUS  &kp JP_N4  &kp JP_N5  &kp JP_N6  &kp JP_COMMA         &trans  &trans  &trans  &kp JP_MINUS  &kp JP_N4  &kp JP_N5  &kp JP_N6  &kp JP_PLUS  &kp JP_STAR
-&trans     &kp JP_N0     &kp JP_N1  &kp JP_N2  &kp JP_N3  &kp JP_DOT    &trans         &trans          &kp JP_N0     &kp JP_N1  &kp JP_N2  &kp JP_N3  &kp JP_DOT   &kp JP_COMMA
-                                    &trans     &trans     &trans                                       &trans        &trans     &trans
+&trans     &kp JP_AT     &kp JP_N7  &kp JP_N8  &kp JP_N9  &kp JP_CARET                   &mmv MOVE_UP               &kp JP_AT     &kp JP_N7  &kp JP_N8  &kp JP_N9  &kp JP_CARET &trans
+&trans     &kp JP_MINUS  &kp JP_N4  &kp JP_N5  &kp JP_N6  &kp JP_COMMA    &mmv MOVE_LEFT &mkp MB1  &mmv MOVE_RIGHT  &kp JP_MINUS  &kp JP_N4  &kp JP_N5  &kp JP_N6  &kp JP_PLUS  &kp JP_STAR
+&trans     &kp JP_N0     &kp JP_N1  &kp JP_N2  &kp JP_N3  &kp JP_DOT    &trans           &mmv MOVE_DOWN             &kp JP_N0     &kp JP_N1  &kp JP_N2  &kp JP_N3  &kp JP_DOT   &kp JP_COMMA
+                                    &trans     &trans     &trans                                                    &trans        &trans     &trans
 			>;
 			sensor-bindings = <&rsr_vol &rsr_trans>;
 		};
@@ -169,7 +169,7 @@
 		L2 {
 			display-name = "SYMBOL";
 			bindings = <
-&trans &kp JP_CAPS  &kp JP_MHEN  &kp JP_ZKHK  &kp LG(SPACE)  &trans                  &trans          &kp JP_GRAVE  &kp JP_SQT   &kp JP_LPAR  &kp JP_RPAR  &kp JP_TILDE  &trans
+&trans &kp CAPS     &kp JP_MHEN  &kp JP_ZKHK  &kp LG(SPACE)  &trans                  &trans          &kp JP_GRAVE  &kp JP_SQT   &kp JP_LPAR  &kp JP_RPAR  &kp JP_TILDE  &trans
 &trans &kp LA(TAB)  &kp SPACE    &kp ENTER    &kp BSPC       &kp DEL         &trans  &trans  &trans  &kp JP_EQUAL  &kp JP_DLLR  &kp JP_PERC  &kp JP_AMPS  &kp JP_PIPE   &trans
 &trans &trans       &trans       &trans       &trans         &trans   &trans         &trans          &kp JP_UNDER  &kp JP_EXCL  &kp JP_DQT   &kp JP_HASH  &trans        &trans
                                  &trans       &trans         &trans                                  &trans        &trans       &trans
